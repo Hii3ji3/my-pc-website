@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why I Need a PC</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      scroll-behavior: smooth;
+    }
+    section {
+      min-height: 100vh;
+      padding: 50px 20px;
+    }
+  </style>
+</head>
+<body class="text-white overflow-x-hidden">
+
+  <!-- Background Music -->
+  <audio id="bgMusic" src="https://assets.mixkit.co/music/preview/mixkit-cinematic-trailer-955.mp3" loop autoplay></audio>
+
+  <!-- Section Sounds -->
+  <audio id="heroSound" src="https://assets.mixkit.co/active_storage/sfx/212/212-preview.mp3"></audio>
+  <audio id="moneySound" src="https://assets.mixkit.co/active_storage/sfx/331/331-preview.mp3"></audio>
+  <audio id="studySound" src="https://assets.mixkit.co/active_storage/sfx/332/332-preview.mp3"></audio>
+  <audio id="disciplineSound" src="https://assets.mixkit.co/active_storage/sfx/333/333-preview.mp3"></audio>
+  <audio id="promiseSound" src="https://assets.mixkit.co/active_storage/sfx/334/334-preview.mp3"></audio>
+
+  <script>
+    const synth = window.speechSynthesis;
+    const narrations = [
+      "Dear Mum, this is not just about a PC. It’s about my future.",
+      "With a PC, I can earn money, learn skills, and support myself.",
+      "I can study better, attend online classes, and do projects efficiently.",
+      "I will be responsible and disciplined using the PC.",
+      "This PC will help me build my future and make you proud."
+    ];
+    const sounds = ['heroSound','moneySound','studySound','disciplineSound','promiseSound'];
+
+    function playAllNarrations() {
+      let index = 0;
+      function playNext() {
+        if(index >= narrations.length) return;
+        document.getElementById(sounds[index]).play();
+        const msg = new SpeechSynthesisUtterance(narrations[index]);
+        msg.rate = 0.9;
+        msg.pitch = 1.1;
+        msg.volume = 1;
+        msg.onend = () => { index++; playNext(); };
+        synth.speak(msg);
+      }
+      playNext();
+    }
+  </script>
+
+  <!-- Tap to Start -->
+  <div id="tapScreen" onclick="playAllNarrations(); this.style.display='none'" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 cursor-pointer">
+    <div class="text-center">
+      <h2 class="text-3xl font-bold mb-4">🔊 Tap to Start</h2>
+      <p class="opacity-80">AYOOO! Here’s why you should buy Anas a PC 😎</p>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="flex flex-col justify-center items-center text-center px-6">
+    <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-pulse">Dear Mum 💙</h1>
+    <p class="text-xl md:text-2xl max-w-2xl opacity-90">This is not just about a PC.<br />It’s about my future.</p>
+    <div class="mt-10 animate-bounce">⬇</div>
+  </section>
+
+  <!-- Money Making -->
+  <section class="flex items-center px-6">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-4xl font-bold mb-4">💰 Earning Money</h2>
+        <p class="text-lg opacity-90">With a PC, I can learn freelancing, online work, video editing, graphic design, coding, and more.<br /><br />This means I can help support myself and reduce pressure on you in the future.</p>
+      </div>
+      <div class="rounded-2xl bg-white/10 p-6 shadow-2xl backdrop-blur">
+        <ul class="space-y-4 text-lg">
+          <li>✔ Freelancing</li>
+          <li>✔ Online jobs</li>
+          <li>✔ Skill-based income</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Studying -->
+  <section class="flex items-center px-6 bg-white/5">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <div class="order-2 md:order-1 rounded-2xl bg-white/10 p-6 shadow-2xl backdrop-blur">
+        <ul class="space-y-4 text-lg">
+          <li>✔ Online classes</li>
+          <li>✔ Research & projects</li>
+          <li>✔ Exams & assignments</li>
+        </ul>
+      </div>
+      <div class="order-1 md:order-2">
+        <h2 class="text-4xl font-bold mb-4">📚 Better Studies</h2>
+        <p class="text-lg opacity-90">A PC will help me study properly, attend online classes, complete assignments faster, and learn new skills that schools alone don’t teach.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Discipline -->
+  <section class="flex items-center px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-6">⏱ Discipline & Responsibility</h2>
+      <p class="text-lg opacity-90">I understand this is a responsibility.<br /><br />I promise to use the PC for learning, earning, and growth — not wasting time.</p>
+    </div>
+  </section>
+
+  <!-- Promise -->
+  <section class="flex items-center justify-center px-6 bg-gradient-to-t from-black to-transparent">
+    <div class="text-center max-w-3xl">
+      <h2 class="text-5xl font-bold mb-6">🤍 My Promise</h2>
+      <p class="text-xl opacity-90">Mum, this PC is not a luxury for me.<br /><br />It’s a tool to build my future, make you proud, and stand on my own feet.</p>
+      <p class="mt-10 text-2xl font-semibold">Thank you for believing in me.</p>
+    </div>
+  </section>
+
+</body>
+</html>
